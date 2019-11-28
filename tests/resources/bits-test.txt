@@ -1,0 +1,15 @@
+<scenerio>
+
+Character: Says something.
+
+- comment
+
+-----
+
+<scenerio 2>
+
+Character 2: Says something.
+
+- comment 2
+
+-----
