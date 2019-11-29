@@ -9,10 +9,14 @@ class Migrate(object):
         bits = []
         bit = []
         while line:
-            bit.append(line.strip())
-            if line.strip() == '-----':
+            l = line.strip()
+            if l[:5] == '-----':
                 bits.append(bit)
                 bit = []
+            elif len(l) > 0:
+                bit.append(line.strip())
             line = f.readline()
         f.close()
+        if len(bit) > 0:
+            bits.append(bit)
         return bits

@@ -8,8 +8,9 @@ Character: Says something.
 
 <scenerio 2>
 
+Character 1: Says something.
+
 Character 2: Says something.
 
 - comment 2
 
------
