@@ -1,3 +1,14 @@
-# bitz-bored
+# bit-bored
 
-Python 3.7 application
+bit-bored is a Python application for managing and story boarding bits.
+
+## Technologies
+
+* Python 3.7
+* pytest
+
+## Usage
+
+```shell
+$ pytest -s
+```
