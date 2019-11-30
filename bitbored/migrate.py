@@ -1,3 +1,6 @@
+from .migrate_bit import MigrateBit
+
+
 class Migrate(object):
 
     def __init__(self, filename):
@@ -11,23 +14,16 @@ class Migrate(object):
         while line:
             l = line.strip()
             if l[:5] == '-----':
-                self._process_bit(bit)
-                bits.append(bit)
+                m = MigrateBit(bit)
+                json = m.to_json()
+                bits.append(json)
                 bit = []
             elif len(l) > 0:
                 bit.append(line.strip())
             line = f.readline()
         f.close()
         if len(bit) > 0:
-            self._process_bit(bit)
-            bits.append(bit)
+            m = MigrateBit(bit)
+            json = m.to_json()
+            bits.append(json)
         return bits
-
-    def _process_bit(self, raw_bit):
-        for raw in raw_bit:
-            if raw[:1] == '<':
-                print("scenerio:" + raw)
-            elif raw[:1] == '-':
-                print("comment:" + raw)
-            else:
-                print("bit:" + raw)
