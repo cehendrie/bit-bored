@@ -3,6 +3,7 @@ from .context import bitbored
 from bitbored import migrate_bit
 import pytest
 
+
 class TestMigrateBit(object):
     def test_to_json(self):
         mb = migrate_bit.MigrateBit(['Character: Says something.'])
@@ -12,7 +13,7 @@ class TestMigrateBit(object):
         assert len(json['bit']) == 1
         assert json['bit'][0] == 'Character: Says something.'
 
-    def test_to_json_multiple_bit(self):
+    def test_to_json_multi_bit(self):
         mb = migrate_bit.MigrateBit(
             [
                 'Character 1: Says something.',
@@ -25,7 +26,7 @@ class TestMigrateBit(object):
         assert json['bit'][0] == 'Character 1: Says something.'
         assert json['bit'][1] == 'Character 2: Says something else.'
 
-    def test_to_json_bit_all(self):
+    def test_to_json_all_fields(self):
         mb = migrate_bit.MigrateBit(
             [
                 '<scenerio>',
