@@ -11,6 +11,7 @@ class Migrate(object):
         while line:
             l = line.strip()
             if l[:5] == '-----':
+                self._process_bit(bit)
                 bits.append(bit)
                 bit = []
             elif len(l) > 0:
@@ -18,5 +19,15 @@ class Migrate(object):
             line = f.readline()
         f.close()
         if len(bit) > 0:
+            self._process_bit(bit)
             bits.append(bit)
         return bits
+
+    def _process_bit(self, raw_bit):
+        for raw in raw_bit:
+            if raw[:1] == '<':
+                print("scenerio:" + raw)
+            elif raw[:1] == '-':
+                print("comment:" + raw)
+            else:
+                print("bit:" + raw)
